@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             
             let presenter = InformationPresenter.init()
-            let viewController = InformationViewController.init()
+            let viewController = InformationViewController(presenter: presenter)
             
             window.rootViewController = viewController
             window.makeKeyAndVisible()

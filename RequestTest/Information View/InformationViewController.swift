@@ -9,7 +9,9 @@
 import UIKit
 
 protocol InformationViewControllerProtocol: AnyObject {
-    
+    func set(count: String)
+    func set(information: String)
+    func setButton(title: String)
 }
 
 final class InformationViewController: UIViewController {
@@ -18,9 +20,9 @@ final class InformationViewController: UIViewController {
     @IBOutlet private weak var informationLabel: UILabel!
     @IBOutlet private weak var loadButton: UIButton!
     
-    private var presenter: InformationViewControllerProtocol
+    private var presenter: InformationPresenterProtocol
     
-    init(presenter: InformationViewControllerProtocol) {
+    init(presenter: InformationPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: String(describing: InformationViewController.self), bundle: nil)
     }
@@ -32,9 +34,21 @@ final class InformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        presenter.attachView(view: self)
+        presenter.viewDidLoad()
     }
 }
 
 extension InformationViewController: InformationViewControllerProtocol {
+    func set(count: String) {
+        countLabel.text = count
+    }
     
+    func set(information: String) {
+        informationLabel.text = information
+    }
+    
+    func setButton(title: String) {
+        loadButton.setTitle(title, for: .normal)
+    }
 }
