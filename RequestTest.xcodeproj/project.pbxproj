@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,8 @@
 		D6411E0623BF3C7D0060D0D2 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6411E0423BF3C7D0060D0D2 /* InformationViewController.swift */; };
 		D6411E0723BF3C7D0060D0D2 /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6411E0523BF3C7D0060D0D2 /* InformationViewController.xib */; };
 		D6411E0A23BF3DB40060D0D2 /* InformationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6411E0923BF3DB40060D0D2 /* InformationPresenter.swift */; };
+		D6411E0C23BF4DAA0060D0D2 /* InformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6411E0B23BF4DAA0060D0D2 /* InformationManager.swift */; };
+		D6411E0F23BF58410060D0D2 /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6411E0E23BF58410060D0D2 /* LinkModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		D6411E0423BF3C7D0060D0D2 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		D6411E0523BF3C7D0060D0D2 /* InformationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
 		D6411E0923BF3DB40060D0D2 /* InformationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPresenter.swift; sourceTree = "<group>"; };
+		D6411E0B23BF4DAA0060D0D2 /* InformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationManager.swift; sourceTree = "<group>"; };
+		D6411E0E23BF58410060D0D2 /* LinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
 		D86AAC207C7150EB109A70A2 /* Pods-RequestTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestTest.release.xcconfig"; path = "Target Support Files/Pods-RequestTest/Pods-RequestTest.release.xcconfig"; sourceTree = "<group>"; };
 		F8EEC30FD7259CDBDBCBB329 /* Pods-RequestTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestTest.debug.xcconfig"; path = "Target Support Files/Pods-RequestTest/Pods-RequestTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +91,6 @@
 				BFE21061E7FCE26AF0A2B875 /* Pods-RequestTestTests.debug.xcconfig */,
 				6E91BB9D853E9ADFDCC17DA0 /* Pods-RequestTestTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -139,8 +142,18 @@
 				D6411E0423BF3C7D0060D0D2 /* InformationViewController.swift */,
 				D6411E0923BF3DB40060D0D2 /* InformationPresenter.swift */,
 				D6411E0523BF3C7D0060D0D2 /* InformationViewController.xib */,
+				D6411E0D23BF4DBB0060D0D2 /* Information request helper */,
 			);
 			path = "Information View";
+			sourceTree = "<group>";
+		};
+		D6411E0D23BF4DBB0060D0D2 /* Information request helper */ = {
+			isa = PBXGroup;
+			children = (
+				D6411E0B23BF4DAA0060D0D2 /* InformationManager.swift */,
+				D6411E0E23BF58410060D0D2 /* LinkModel.swift */,
+			);
+			path = "Information request helper";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +326,8 @@
 			files = (
 				D6411DE323BF3B7C0060D0D2 /* AppDelegate.swift in Sources */,
 				D6411DE523BF3B7C0060D0D2 /* SceneDelegate.swift in Sources */,
+				D6411E0C23BF4DAA0060D0D2 /* InformationManager.swift in Sources */,
+				D6411E0F23BF58410060D0D2 /* LinkModel.swift in Sources */,
 				D6411E0623BF3C7D0060D0D2 /* InformationViewController.swift in Sources */,
 				D6411E0A23BF3DB40060D0D2 /* InformationPresenter.swift in Sources */,
 			);

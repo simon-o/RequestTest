@@ -21,7 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
-            let presenter = InformationPresenter.init()
+            let manager = InformationManager()
+            let presenter = InformationPresenter(manager: manager)
             let viewController = InformationViewController(presenter: presenter)
             
             window.rootViewController = viewController

@@ -20,8 +20,10 @@ protocol InformationPresenterProtocol: AnyObject {
 
 final class InformationPresenter {
     private weak var view: InformationViewController?
+    private var manager: InformationManagerProtocol
     
-    init() {
+    init(manager: InformationManagerProtocol) {
+        self.manager = manager
     }
     
     private func saveCount(number: String) {
@@ -38,7 +40,9 @@ final class InformationPresenter {
 
 extension InformationPresenter: InformationPresenterProtocol {
     func buttonPressed() {
-        
+        manager.getURL { (result) in
+            print(result)
+        }
     }
     
     func viewDidLoad() {
