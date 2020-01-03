@@ -37,6 +37,10 @@ final class InformationViewController: UIViewController {
         presenter.attachView(view: self)
         presenter.viewDidLoad()
     }
+    
+    @IBAction func buttonPressed(_ sender: Any) {
+        presenter.buttonPressed()
+    }
 }
 
 extension InformationViewController: InformationViewControllerProtocol {

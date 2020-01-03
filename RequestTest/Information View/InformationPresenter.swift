@@ -15,6 +15,7 @@ struct defaultsKeys {
 protocol InformationPresenterProtocol: AnyObject {
     func attachView(view: InformationViewController)
     func viewDidLoad()
+    func buttonPressed()
 }
 
 final class InformationPresenter {
@@ -36,6 +37,10 @@ final class InformationPresenter {
 }
 
 extension InformationPresenter: InformationPresenterProtocol {
+    func buttonPressed() {
+        
+    }
+    
     func viewDidLoad() {
         view?.set(count: getCount())
         view?.set(information: "")
