@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 
 protocol InformationManagerProtocol: AnyObject {
-   func getURL(completion: @escaping((String) -> Void))
+    func getURL(completion: @escaping((Result<LinkModel?, AFError>) -> Void))
+    func getInformation(urlFetch: String, completion: @escaping((Result<InformationModel?, AFError>) -> Void))
 }
 
 final class InformationManager {
@@ -22,7 +23,7 @@ final class InformationManager {
 }
 
 extension InformationManager: InformationManagerProtocol {
-    func getURL(completion: @escaping((String) -> Void)) {
+    func getURL(completion: @escaping((Result<LinkModel?, AFError>) -> Void)) {
         if let url = URL(string: url) {
             AF.request(URLRequest(url: url))
                 .responseJSON { response in
@@ -30,9 +31,25 @@ extension InformationManager: InformationManagerProtocol {
                     case .success(_):
                         guard let data = response.data else { break }
                         let result = try? JSONDecoder().decode(LinkModel.self, from: data)
-                        completion(result?.next_path)
+                        completion(.success(result))
                     case .failure(let error):
-                        completion(error.errorDescription)
+                        completion(.failure(error))
+                    }
+            }
+        }
+    }
+    
+    func getInformation(urlFetch: String, completion: @escaping((Result<InformationModel?, AFError>) -> Void)) {
+        if let url = URL(string: urlFetch) {
+            AF.request(URLRequest(url: url))
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(_):
+                        guard let data = response.data else { break }
+                        let result = try? JSONDecoder().decode(InformationModel.self, from: data)
+                        completion(.success(result))
+                    case .failure(let error):
+                        completion(.failure(error))
                     }
             }
         }

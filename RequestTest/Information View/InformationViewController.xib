@@ -26,8 +26,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKz-EX-tcX">
-                    <rect key="frame" x="186" y="225" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKz-EX-tcX">
+                    <rect key="frame" x="5" y="225" width="404" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -44,8 +44,10 @@
             <constraints>
                 <constraint firstItem="dKz-EX-tcX" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="3CO-vk-15i"/>
                 <constraint firstItem="dKz-EX-tcX" firstAttribute="top" secondItem="8jA-Cd-Uwf" secondAttribute="bottom" constant="60" id="6gc-q8-pRk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dKz-EX-tcX" secondAttribute="trailing" constant="5" id="7pK-6E-tAa"/>
                 <constraint firstItem="8jA-Cd-Uwf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="Bf1-hl-SWo"/>
                 <constraint firstItem="qPw-BD-wCd" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Er7-Ff-hEd"/>
+                <constraint firstItem="dKz-EX-tcX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="S6o-xb-q5i"/>
                 <constraint firstItem="qPw-BD-wCd" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="UKn-4m-H35"/>
                 <constraint firstItem="8jA-Cd-Uwf" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="e5c-7Z-B44"/>
             </constraints>

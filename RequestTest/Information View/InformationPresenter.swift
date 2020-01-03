@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 struct defaultsKeys {
     static let countKey = "countKey"
@@ -36,18 +37,37 @@ final class InformationPresenter {
         }
         return "0"
     }
+    
+    private func getInfo(model: LinkModel?) {
+        guard let url = model?.next_path else { return }
+        manager.getInformation(urlFetch: url) { [weak self] (result) in
+            switch result {
+            case .success(let info):
+                self?.view?.set(information: "Response Code: " + (info?.response_code ?? info?.error ?? ""))
+            case .failure(let error): break
+            }
+        }
+    }
+    
+    private func getURL() {
+        manager.getURL { [weak self] (result) in
+            switch result {
+            case .success(let model):
+                self?.getInfo(model: model)
+            case .failure(let error): break
+            }
+        }
+    }
 }
 
 extension InformationPresenter: InformationPresenterProtocol {
     func buttonPressed() {
-        manager.getURL { (result) in
-            print(result)
-        }
+        getURL()
     }
     
     func viewDidLoad() {
-        view?.set(count: getCount())
-        view?.set(information: "")
+        view?.set(count: "Times Fetched: " + getCount())
+        view?.set(information: "Response Code:")
         view?.setButton(title: "Load")
     }
     

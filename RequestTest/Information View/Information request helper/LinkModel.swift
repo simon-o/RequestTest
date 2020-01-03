@@ -9,15 +9,11 @@
 import Foundation
 
 struct LinkModel: Codable {
-    var next_path: String?
-    var error: String?
+    var next_path: String
 }
 
 struct InformationModel: Codable {
-    var path: String
-    var response_code: String
-}
-
-struct ErrorModel: Codable {
-    var error: String
+    var path: String?
+    var response_code: String?
+    var error: String?
 }
