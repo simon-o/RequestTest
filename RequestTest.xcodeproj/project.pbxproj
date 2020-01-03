@@ -121,11 +121,11 @@
 			children = (
 				D6411DE223BF3B7C0060D0D2 /* AppDelegate.swift */,
 				D6411DE423BF3B7C0060D0D2 /* SceneDelegate.swift */,
+				D6411E1223BF8A8C0060D0D2 /* Base VC */,
 				D6411E0823BF3C830060D0D2 /* Information View */,
 				D6411DEB23BF3B7F0060D0D2 /* Assets.xcassets */,
 				D6411DED23BF3B7F0060D0D2 /* LaunchScreen.storyboard */,
 				D6411DF023BF3B7F0060D0D2 /* Info.plist */,
-				D6411E1023BF6DB20060D0D2 /* BaseViewController.swift */,
 			);
 			path = RequestTest;
 			sourceTree = "<group>";
@@ -157,6 +157,14 @@
 				D6411E0E23BF58410060D0D2 /* LinkModel.swift */,
 			);
 			path = "Information request helper";
+			sourceTree = "<group>";
+		};
+		D6411E1223BF8A8C0060D0D2 /* Base VC */ = {
+			isa = PBXGroup;
+			children = (
+				D6411E1023BF6DB20060D0D2 /* BaseViewController.swift */,
+			);
+			path = "Base VC";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
