@@ -19,6 +19,7 @@
 		D6411E0A23BF3DB40060D0D2 /* InformationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6411E0923BF3DB40060D0D2 /* InformationPresenter.swift */; };
 		D6411E0C23BF4DAA0060D0D2 /* InformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6411E0B23BF4DAA0060D0D2 /* InformationManager.swift */; };
 		D6411E0F23BF58410060D0D2 /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6411E0E23BF58410060D0D2 /* LinkModel.swift */; };
+		D6411E1123BF6DB20060D0D2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6411E1023BF6DB20060D0D2 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		D6411E0923BF3DB40060D0D2 /* InformationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPresenter.swift; sourceTree = "<group>"; };
 		D6411E0B23BF4DAA0060D0D2 /* InformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationManager.swift; sourceTree = "<group>"; };
 		D6411E0E23BF58410060D0D2 /* LinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
+		D6411E1023BF6DB20060D0D2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D86AAC207C7150EB109A70A2 /* Pods-RequestTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestTest.release.xcconfig"; path = "Target Support Files/Pods-RequestTest/Pods-RequestTest.release.xcconfig"; sourceTree = "<group>"; };
 		F8EEC30FD7259CDBDBCBB329 /* Pods-RequestTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestTest.debug.xcconfig"; path = "Target Support Files/Pods-RequestTest/Pods-RequestTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 				D6411DEB23BF3B7F0060D0D2 /* Assets.xcassets */,
 				D6411DED23BF3B7F0060D0D2 /* LaunchScreen.storyboard */,
 				D6411DF023BF3B7F0060D0D2 /* Info.plist */,
+				D6411E1023BF6DB20060D0D2 /* BaseViewController.swift */,
 			);
 			path = RequestTest;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				D6411E0C23BF4DAA0060D0D2 /* InformationManager.swift in Sources */,
 				D6411E0F23BF58410060D0D2 /* LinkModel.swift in Sources */,
 				D6411E0623BF3C7D0060D0D2 /* InformationViewController.swift in Sources */,
+				D6411E1123BF6DB20060D0D2 /* BaseViewController.swift in Sources */,
 				D6411E0A23BF3DB40060D0D2 /* InformationPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

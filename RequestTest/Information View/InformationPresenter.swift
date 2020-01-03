@@ -7,10 +7,11 @@
 //
 
 import Foundation
-import Alamofire
+import RxSwift
+import RxRelay
 
 struct defaultsKeys {
-    static let countKey = "countKey"
+    static let countKey = "counterKey"
 }
 
 protocol InformationPresenterProtocol: AnyObject {
@@ -22,20 +23,19 @@ protocol InformationPresenterProtocol: AnyObject {
 final class InformationPresenter {
     private weak var view: InformationViewController?
     private var manager: InformationManagerProtocol
+    private let countRX: BehaviorRelay<Int> = BehaviorRelay(value: UserDefaults.standard.integer(forKey: defaultsKeys.countKey))
+    private let disposeBag = DisposeBag()
     
     init(manager: InformationManagerProtocol) {
         self.manager = manager
     }
     
-    private func saveCount(number: String) {
+    private func saveCount(number: Int) {
         UserDefaults.standard.set(number, forKey: defaultsKeys.countKey)
     }
     
-    private func getCount() -> String {
-        if let stringOne = UserDefaults.standard.string(forKey: defaultsKeys.countKey) {
-            return stringOne
-        }
-        return "0"
+    private func getCount() -> Int {
+        return UserDefaults.standard.integer(forKey: defaultsKeys.countKey)
     }
     
     private func getInfo(model: LinkModel?) {
@@ -43,8 +43,10 @@ final class InformationPresenter {
         manager.getInformation(urlFetch: url) { [weak self] (result) in
             switch result {
             case .success(let info):
+                self?.countRX.accept((self?.countRX.value ?? 0) + 1)
                 self?.view?.set(information: "Response Code: " + (info?.response_code ?? info?.error ?? ""))
-            case .failure(let error): break
+            case .failure(let error):
+                self?.view?.alertView(title: "Error", message: error.errorDescription ?? "Error", buttonTitle: "Ok")
             }
         }
     }
@@ -54,7 +56,8 @@ final class InformationPresenter {
             switch result {
             case .success(let model):
                 self?.getInfo(model: model)
-            case .failure(let error): break
+            case .failure(let error):
+                self?.view?.alertView(title: "Error", message: error.errorDescription ?? "Error", buttonTitle: "Ok")
             }
         }
     }
@@ -66,9 +69,18 @@ extension InformationPresenter: InformationPresenterProtocol {
     }
     
     func viewDidLoad() {
-        view?.set(count: "Times Fetched: " + getCount())
         view?.set(information: "Response Code:")
         view?.setButton(title: "Load")
+        
+        countRX.asObservable().subscribe(onNext: { [weak self] (count) in
+            self?.saveCount(number: count)
+            self?.view?.set(count: "Times Fetched: " + String(self?.getCount() ?? 0))
+        },
+                                         onError: nil,
+                                         onCompleted: nil,
+                                         onDisposed: nil).disposed(by: disposeBag)
+        
+        countRX.accept(getCount())
     }
     
     func attachView(view: InformationViewController) {

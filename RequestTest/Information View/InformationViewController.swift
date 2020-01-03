@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol InformationViewControllerProtocol: AnyObject {
+protocol InformationViewControllerProtocol: BaseViewControllerProtocol {
     func set(count: String)
     func set(information: String)
     func setButton(title: String)
