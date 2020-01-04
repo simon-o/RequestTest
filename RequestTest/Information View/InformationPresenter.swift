@@ -44,7 +44,9 @@ final class InformationPresenter {
         manager.getInformation(urlFetch: url) { [weak self] (result) in
             switch result {
             case .success(let info):
-                self?.countRX.accept((self?.countRX.value ?? 0) + 1)
+                if ((info?.response_code) != nil) {
+                    self?.countRX.accept((self?.countRX.value ?? 0) + 1)
+                }
                 self?.view?.set(information: "Response Code: " + (info?.response_code ?? info?.error ?? ""))
             case .failure(let error):
                 self?.view?.alertView(title: "Error", message: error.errorDescription ?? "Error", buttonTitle: "Ok")
