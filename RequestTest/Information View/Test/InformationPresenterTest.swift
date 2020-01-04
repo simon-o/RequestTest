@@ -135,6 +135,32 @@ class InformationPresenterTest: XCTestCase {
         XCTAssertNil(view.titleError)
         XCTAssertNil(view.buttonTitleError)
     }
+    
+    func test_manager_success_fail_empty() {
+        let view = InformationViewControllerMock()
+        let prevCount = UserDefaults.standard.integer(forKey: defaultsKeys.countKey)
+        
+        presenter.attachView(view: view)
+        presenter.viewDidLoad()
+        presenter.buttonPressed()
+        
+        XCTAssertNotNil(manager.getURLCompletion)
+        XCTAssertNotNil(manager.getInformationCompletion)
+        
+        manager.getURLCompletion!(.success(LinkModel.init(next_path: "next1")))
+        
+        XCTAssertEqual(UserDefaults.standard.integer(forKey: defaultsKeys.countKey), prevCount)
+        XCTAssertEqual(view.informationSet, "Response Code:")
+        
+        manager.getInformationCompletion!(.success(InformationModel(path: nil, response_code: nil, error: nil)))
+        
+        XCTAssertEqual(prevCount, UserDefaults.standard.integer(forKey: defaultsKeys.countKey))
+        XCTAssertEqual(view.countSet, "Times Fetched: " + String(UserDefaults.standard.integer(forKey: defaultsKeys.countKey)))
+        XCTAssertEqual(view.informationSet, "Response Code:")
+        XCTAssertEqual(view.messageError, "Empty")
+        XCTAssertEqual(view.titleError, "Error")
+        XCTAssertEqual(view.buttonTitleError, "Ok")
+    }
 }
 
 class InformationViewControllerMock: InformationViewControllerProtocol {
