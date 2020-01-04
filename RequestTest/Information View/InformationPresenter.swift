@@ -47,10 +47,8 @@ final class InformationPresenter {
                 if let response = info?.response_code {
                     self?.countRX.accept((self?.countRX.value ?? 0) + 1)
                     self?.view?.set(information: "Response Code: " + response)
-                } else if let error = info?.error {
-                    self?.view?.set(information: "Response Code: " + error)
                 } else {
-                    self?.view?.alertView(title: "Error", message: "Empty", buttonTitle: "Ok")
+                    self?.view?.alertView(title: "Error", message: info?.error ?? "Empty", buttonTitle: "Ok")
                 }
             case .failure(let error):
                 self?.view?.alertView(title: "Error", message: error.errorDescription ?? "Error", buttonTitle: "Ok")

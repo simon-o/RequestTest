@@ -130,10 +130,10 @@ class InformationPresenterTest: XCTestCase {
         
         XCTAssertEqual(prevCount, UserDefaults.standard.integer(forKey: defaultsKeys.countKey))
         XCTAssertEqual(view.countSet, "Times Fetched: " + String(UserDefaults.standard.integer(forKey: defaultsKeys.countKey)))
-        XCTAssertEqual(view.informationSet, "Response Code: Error")
-        XCTAssertNil(view.messageError)
-        XCTAssertNil(view.titleError)
-        XCTAssertNil(view.buttonTitleError)
+        XCTAssertEqual(view.informationSet, "Response Code:")
+        XCTAssertEqual(view.messageError, "Error")
+        XCTAssertEqual(view.titleError, "Error")
+        XCTAssertEqual(view.buttonTitleError, "Ok")
     }
     
     func test_manager_success_fail_empty() {
