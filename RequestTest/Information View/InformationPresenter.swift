@@ -15,15 +15,16 @@ struct defaultsKeys {
 }
 
 protocol InformationPresenterProtocol: AnyObject {
-    func attachView(view: InformationViewController)
+    func attachView(view: InformationViewControllerProtocol)
     func viewDidLoad()
     func buttonPressed()
 }
 
 final class InformationPresenter {
-    private weak var view: InformationViewController?
+    private weak var view: InformationViewControllerProtocol?
     private var manager: InformationManagerProtocol
     private let countRX: BehaviorRelay<Int> = BehaviorRelay(value: UserDefaults.standard.integer(forKey: defaultsKeys.countKey))
+    private var modelRX: BehaviorRelay<LinkModel> = BehaviorRelay(value: LinkModel(next_path: ""))
     private let disposeBag = DisposeBag()
     
     init(manager: InformationManagerProtocol) {
@@ -55,7 +56,8 @@ final class InformationPresenter {
         manager.getURL { [weak self] (result) in
             switch result {
             case .success(let model):
-                self?.getInfo(model: model)
+                guard let model = model else { return }
+                self?.modelRX.accept(model)
             case .failure(let error):
                 self?.view?.alertView(title: "Error", message: error.errorDescription ?? "Error", buttonTitle: "Ok")
             }
@@ -65,6 +67,12 @@ final class InformationPresenter {
 
 extension InformationPresenter: InformationPresenterProtocol {
     func buttonPressed() {
+        modelRX.asObservable().subscribe(onNext: { [weak self] (model) in
+            self?.getInfo(model: model)
+        },
+                                         onError: nil,
+                                         onCompleted: nil,
+                                         onDisposed: nil).disposed(by: disposeBag)
         getURL()
     }
     
@@ -83,7 +91,7 @@ extension InformationPresenter: InformationPresenterProtocol {
         countRX.accept(getCount())
     }
     
-    func attachView(view: InformationViewController) {
+    func attachView(view: InformationViewControllerProtocol) {
         self.view = view
     }
 }
